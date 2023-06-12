@@ -118,7 +118,7 @@ fi
 # parse csv file -- substitute commas or semicolons with tabs, delete quotes
 
 parse() {
- sed -e 's_,_\t_g'  -e 's_;_\t_g' -e 's_"__g'   
+ sed -e 's_;_\t_g' -e 's_"__g'   
 }
 
 # get fields from csv files
@@ -152,8 +152,8 @@ if [ $STYLE = -fancy ]; then
 #  COMPLETE=$(cat $FILENAME | parse | getfields | katakana | addfancylatex)
   COMPLETE=$(cat $FILENAME | parse | getfields | addfancylatex)
 else
-#  COMPLETE=$(cat $FILENAME | parse | getfields | katakana | addlatex)
-COMPLETE=$(cat $FILENAME | parse | getfields | addlatex)
+#   COMPLETE=$(cat $FILENAME | parse | getfields | katakana | addlatex)
+  COMPLETE=$(cat $FILENAME | parse | getfields | addlatex)
 fi
 
 # create content.tex file named according to paper size, copy edited template file, compile with xelatex
